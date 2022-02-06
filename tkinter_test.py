@@ -13,6 +13,8 @@ my_input1 = tk.Entry(window, width=50)
 my_radio1 = tk.Radiobutton(window,text="USD", value = 75.96, variable=rate)
 my_radio2 = tk.Radiobutton(window,text="EUR", value = 86.01, variable=rate)
 my_radio3 = tk.Radiobutton(window,text="BTC", value = 2926121.62, variable=rate)
+my_radio4 = tk.Radiobutton(window, text="KWD", value= 250.60 , variable=rate)
+my_radio5 = tk.Radiobutton(window, text="DHS", value= 20.62, variable=rate)
 my_button = tk.Button(window, text="получить результат", command= lambda: calculate_currency(rate))
 my_label3 = tk.Label(window)
 
@@ -23,6 +25,8 @@ my_radio2.pack()
 my_radio3.pack()
 my_button.pack()
 my_label3.pack()
+my_radio4.pack()
+my_radio5.pacK()
 
 def calculate_currency(rate):
 	result = round(int(my_input1.get()) / rate.get(), 2)
