@@ -1,36 +1,51 @@
 import tkinter as tk
 
 window = tk.Tk()
-window.title("Windows 10")
-window.geometry("800x600")
+window.title("window 10")
 
 rate = tk.DoubleVar()
 rate.set(75.96)
-	
+rate_1 = tk.DoubleVar()
+rate_1.set(1)
+    
 selected = 75
-my_label2 = tk.Label(window, text="введите сумму в рублях")
-my_input1 = tk.Entry(window, width=50)
-my_radio1 = tk.Radiobutton(window,text="USD", value = 75.96, variable=rate)
-my_radio2 = tk.Radiobutton(window,text="EUR", value = 86.01, variable=rate)
-my_radio3 = tk.Radiobutton(window,text="BTC", value = 2926121.62, variable=rate)
-my_radio4 = tk.Radiobutton(window, text="KWD", value= 250.60 , variable=rate)
-my_radio5 = tk.Radiobutton(window, text="DHS", value= 20.62, variable=rate)
-my_button = tk.Button(window, text="получить результат", command= lambda: calculate_currency(rate))
-my_label3 = tk.Label(window)
+main_frame = tk.Frame(window, padx=20, pady=20)
+my_label2 = tk.Label(main_frame, text="введите сумму")
+my_input1 = tk.Entry(main_frame, width=50)
+my_label4 = tk.Label(main_frame, text="валюта в которой вводите")
+my_radio1 = tk.Radiobutton(main_frame,text="USD", value = 75.96, variable=rate)
+my_radio2 = tk.Radiobutton(main_frame,text="EUR", value = 86.01, variable=rate)
+my_radio3 = tk.Radiobutton(main_frame,text="BTC", value = 2926121.62, variable=rate)
+my_radio4 = tk.Radiobutton(main_frame, text="RUB", value= 1, variable=rate)
+my_label5 = tk.Label(main_frame, text="валюта в которой хотите получить")
+my_radio5 = tk.Radiobutton(main_frame, text="USD", value = 75.96, variable=rate_1)
+my_radio6 = tk.Radiobutton(main_frame, text="EUR", value = 86.01, variable=rate_1)
+my_radio7 = tk.Radiobutton(main_frame, text="BTC", value = 2926121.62, variable=rate_1)
+my_radio8 = tk.Radiobutton(main_frame, text="RUB", value = 1, variable=rate_1)
+my_button = tk.Button(main_frame, text="получить результат", command= lambda: calculate_currency(rate, rate_1))
+my_label3 = tk.Label(main_frame)
+main_frame.pack()
+my_label2.grid(column=1, row=0)
+my_input1.grid(column=1, row=2)
+my_radio1.grid(column=4, row=4)
+my_radio2.grid(column=4, row=5)
+my_radio3.grid(column=4, row=6)
+my_radio4.grid(column=4, row=7)
+my_label4.grid(column=1, row=3)
+my_radio5.grid(column=1, row=4)
+my_radio6.grid(column=1, row=5)
+my_radio7.grid(column=1, row=6)
+my_radio8.grid(column=1, row=7)
+my_label5.grid(column=4, row=3)
+my_button.grid(column=2, row=8)
+my_label3.grid(column=4, row=2)
 
-my_label2.pack()
-my_input1.pack()
-my_radio1.pack()
-my_radio2.pack()
-my_radio3.pack()
-my_button.pack()
-my_label3.pack()
-my_radio4.pack()
-my_radio5.pacK()
-
-def calculate_currency(rate):
-	result = round(int(my_input1.get()) / rate.get(), 2)
-	my_label3.config(text=result)
 
 
-window.mainloop()
+def calculate_currency(rate, rate_1):
+    entr_rate = round(int(my_input1.get()) * rate_1.get(), 2)
+    result_1 = round(int(entr_rate) / rate.get(), 2)
+    my_label3.config(text=result_1)
+
+
+main_frame.mainloop()
