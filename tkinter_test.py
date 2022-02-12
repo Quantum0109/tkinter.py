@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox as mb
 
 window = tk.Tk()
 window.title("window 10")
@@ -43,9 +44,17 @@ my_label3.grid(column=4, row=2)
 
 
 def calculate_currency(rate, rate_1):
-    entr_rate = round(int(my_input1.get()) * rate_1.get(), 2)
-    result_1 = round(int(entr_rate) / rate.get(), 2)
-    my_label3.config(text=result_1)
+    try:
+        int(my_input1.get())
+    except ValueError:
+        mb.showwarning("Ошибка", "Введите сумму целым числом")
+        my_input1.delete(0, 'end')
+    else:
+        entr_rate = round(int(my_input1.get()) * rate_1.get(), 2)
+        result_1 = round(int(entr_rate) / rate.get(), 2)
+        my_label3.config(text=result_1)
 
 
 main_frame.mainloop()
+
+
