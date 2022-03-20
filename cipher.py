@@ -1,7 +1,7 @@
 import tkinter as tk
 
 window = tk.Tk()
-window.title("encrypt&bruteforce")
+window.title("Encrypt&Bruteforce")
 
 main_frame = tk.Frame(window, padx=20, pady=20)
 
